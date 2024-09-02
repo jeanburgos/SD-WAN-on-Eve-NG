@@ -25,7 +25,7 @@ system
   usergroup tenantadmin
   !
   user admin
-   password $6$50a2c602da2c5c13$FjjT8ITRCiUwt9fHjXcOZlU1HlqapJXdIhLeVrmwzNOincjRqnkggGA367X2Df8B2PIDHDruVbP8snT7Un4sD0
+   password admin
   !
   ciscotacro-user true
   ciscotacrw-user true
