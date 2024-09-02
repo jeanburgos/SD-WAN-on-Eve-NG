@@ -1,0 +1,71 @@
+system
+ host-name               vBond
+ system-ip               1.1.1.2
+ site-id                 1000
+ admin-tech-on-failure
+ no route-consistency-check
+ no vrrp-advt-with-phymac
+ organization-name       mystacktrace
+ vbond 10.1.1.2 local vbond-only
+ aaa
+  auth-order      local radius tacacs
+  usergroup basic
+   task system read
+   task interface read
+  !
+  usergroup netadmin
+  !
+  usergroup operator
+   task system read
+   task interface read
+   task policy read
+   task routing read
+   task security read
+  !
+  usergroup tenantadmin
+  !
+  user admin
+   password $6$d17748703631b6fe$w2LEiv5X2stC6PTqkoHLvJ693TDkQPbaU/6I2kRSt9IfcRGCNTqLD1QuR8orJRbDq9CRCBfi8E74./kFjhXuJ/
+  !
+  ciscotacro-user true
+  ciscotacrw-user true
+ !
+ logging
+  disk
+   enable
+  !
+ !
+ ntp
+  parent
+   no enable
+   stratum 5
+  exit
+ !
+!
+omp
+ no shutdown
+ graceful-restart
+ advertise connected
+ advertise static
+!
+security
+ ipsec
+  integrity-type ip-udp-esp esp
+ !
+!
+vpn 0
+ interface ge0/0
+  ip address 10.1.1.2/24
+  ipv6 dhcp-client
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.1.1.254
+!
+vpn 512
+ interface eth0
+  ip address 192.168.1.2/24
+  ipv6 dhcp-client
+  no shutdown
+ !
+ ip route 0.0.0.0/0 192.168.1.254
+!

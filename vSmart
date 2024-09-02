@@ -1,0 +1,66 @@
+system
+ host-name             vsmart
+ system-ip             1.1.1.3
+ site-id               1000
+ admin-tech-on-failure
+ no vrrp-advt-with-phymac
+ organization-name     mystacktrace
+ vbond 10.1.1.2
+ aaa
+  auth-order      local radius tacacs
+  usergroup basic
+   task system read
+   task interface read
+  !
+  usergroup netadmin
+  !
+  usergroup operator
+   task system read
+   task interface read
+   task policy read
+   task routing read
+   task security read
+  !
+  usergroup tenantadmin
+  !
+  user admin
+   password $6$c1cc681a3cebbbea$k7iYikiKce7fuzk.HGskGIYqS1M18YuJ8MUnMhBMhB6zCVFtQVN3SkY8pdViqboQijSoXlj.NrKPW4tXYWHWa0
+  !
+  ciscotacro-user true
+  ciscotacrw-user true
+ !
+ logging
+  disk
+   enable
+  !
+ !
+ ntp
+  parent
+   no enable
+   stratum 5
+  exit
+ !
+!
+omp
+ no shutdown
+ filter-route
+  no outbound affinity-group-preference
+  no outbound tloc-color
+ exit
+ graceful-restart
+ outbound-policy-caching
+!
+vpn 0
+ interface eth1
+  ip address 10.1.1.3/24
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.1.1.254
+!
+vpn 512
+ interface eth0
+  ip address 192.168.1.3/24
+  no shutdown
+ !
+ ip route 0.0.0.0/0 192.168.1.254
+!
