@@ -23,3 +23,5 @@ Once you have configured vManage, use the vManage IP for VPN 512 on the browser.
 To logon to vManage using the console, wait for "System Ready" befor using the default credentials to login. User admin, password admin.
 
 ![VManage Login on Ubuntu](vManage-Login.PNG)
+
+This project is a work in progress. Since this scenario does not have internet access, it causes the ubuntu machine to be really slow when accessing vManage GUI. 
