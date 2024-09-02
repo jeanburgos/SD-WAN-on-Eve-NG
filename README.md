@@ -25,3 +25,8 @@ To logon to vManage using the console, wait for "System Ready" befor using the d
 ![VManage Login on Ubuntu](vManage-Login.PNG)
 
 This project is a work in progress. Since this scenario does not have internet access, it causes the ubuntu machine to be really slow when accessing vManage GUI. 
+
+
+
+=======================================
+When working with Certificate Authority for vManage I encounter the error that my vmanger_crt certificate did not have the serial number of the device. ![Putty from Eve-NG](Putty.PNG)I though I was copying my cert from the SSH Putty session, but the QEMU for Ubuntu does not accept paste from external sources. ![SSH from Ubuntu](<Ubuntu _SSH.PNG>)To get around this issue I SSH from Ubuntu and copy the certificate into vManage GUI successfully. ![Successful cert import into vManage GUI](vManageCeret.PNG)
