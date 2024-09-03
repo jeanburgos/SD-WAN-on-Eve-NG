@@ -30,3 +30,39 @@ This project is a work in progress. Since this scenario does not have internet a
 
 =======================================
 When working with Certificate Authority for vManage I encounter the error that my vmanger_crt certificate did not have the serial number of the device. ![Putty from Eve-NG](Putty.PNG)I though I was copying my cert from the SSH Putty session, but the QEMU for Ubuntu does not accept paste from external sources. ![SSH from Ubuntu](<Ubuntu _SSH.PNG>)To get around this issue I SSH from Ubuntu and copy the certificate into vManage GUI successfully. ![Successful cert import into vManage GUI](vManageCeret.PNG)
+
+
+
+========================================
+Adding vBond to vManage
+I had the hardest time adding vBond to vManage. This is because VPN 0 now requires tunnel interface and then have the services allowed through the tunnel. The initial configuration was using version 16 of Cisco SD-Wan, and the images I am using are much newer ver. 20. 
+
+The good news is that is not too hard to add the config using the CLI. 
+`Configure Terminal`
+`VPN 0`
+`Interface ge0/0`
+`Tunnel-Interface`
+`Encapsulation IPsec`
+`Allow-Service All`
+
+then don't forget to commit your changes. 
+`commit`
+
+![vBond finally added](<vbond cert.PNG>)
+![CSR](vbond_csr.PNG)
+
+I have been getting stuck on adding vEdge to vManage. Both vEdges are reacheable from vManage 172.16.1.1 and 172.16.2.1. 
+
+I have successfully create the .csr and then had them signed by vManage, and imported the vEdge_crt successfully. 
+
+The issue is when attempting to upload the WAN Edge List .csv file. I am including the chasis number and serial number. You can get these by using the `Show Certificate Serial` command. 
+
+No matter how I import it I continue to get an error. 
+
+I strongly believe that this has something to do with my not having a Cisco Smart Account. There you can create the templates that can be then uploaded into vManage. 
+
+This is exactly the same place I got stucked while using Cisco Modeling Labs when I attempted a similar lab. 
+
+For now this is all for this project until I find a solution to this issue. 
+
+If you made it here, I hope you enjoyed the lab journey. Eventhough I could not finalize it, it was fun. 
