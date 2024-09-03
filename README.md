@@ -4,6 +4,7 @@ This repository contains configurations gathered from a variety of videos on You
 
 Although I have setup the SD-WAB lab on CML, this will be my firt time using Eve-NG for any lab. 
 
+Follow the instruction in the [Initial SD-WAN Configurations](<Initial SD-WAN Configurations>)
 
 ===========================
 Note:

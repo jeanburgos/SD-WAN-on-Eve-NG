@@ -389,6 +389,7 @@ vedge# request certificate install /home/admin/vedge01_crt
 
 vedge# show certificate serial
 
+=======I Stopped here since my SD-Wan version has different requirement to uload vEdge devices========
 
 + Create text file with below on Ubuntu:
 368755e1-cfc9-4dbe-984e-9a8d7e3f41f9,BB36DBCE6DF33852
